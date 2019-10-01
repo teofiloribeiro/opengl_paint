@@ -21,7 +21,7 @@ void PainelOpenGl::initializeGL(){
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 void PainelOpenGl::resizeGL(int width, int height){
-    double menorX = 0, maiorX = 10, menorY = 0, maiorY = 10;
+    this->menorX = 0, this->maiorX = 10, this->menorY = 0, this->maiorY = 10;
     glViewport( 0, 0, (GLint)width, (GLint)height );
 
     glMatrixMode(GL_PROJECTION);
@@ -54,7 +54,7 @@ void PainelOpenGl::paintGL(){
     // e Limpa o buffer de teste de profundidade
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity(); // limpa todas as transforma��es
-
+    this->drawMesh();
     glTranslated(5.0, 5.0, 0.0);
 
     // Desenha um pol�gono com N lados informado pelo usu�rio
@@ -87,3 +87,18 @@ void PainelOpenGl::alterarRaio(double r){
         updateGL();
     }
 }
+
+
+void PainelOpenGl::drawMesh(){
+    glLineWidth(10);
+    glColor3f(0,0,0);
+    glPointSize(5.0f);
+    glBegin(GL_POINTS);
+    for(int i = this->menorX; i<= this->maiorX; i++){
+        for(int j = this->menorY; j<= this->maiorY; j++){
+            glVertex2f(i,j);
+        }
+    }
+    glEnd();
+}
+
