@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JanelaPrincipal</class>
+ <widget class="QWidget" name="JanelaPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>594</width>
+    <height>410</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Projeto OpenGL</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Lados:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QSpinBox" name="spinBox">
+     <property name="maximumSize">
+      <size>
+       <width>75</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="minimum">
+      <number>3</number>
+     </property>
+     <property name="maximum">
+      <number>60</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Raio</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QDoubleSpinBox" name="doubleSpinBox">
+     <property name="maximumSize">
+      <size>
+       <width>75</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="decimals">
+      <number>1</number>
+     </property>
+     <property name="minimum">
+      <double>1.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>10.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>72</width>
+       <height>270</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="pushButton">
+     <property name="maximumSize">
+      <size>
+       <width>75</width>
+       <height>23</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Sair</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="6">
+    <widget class="MeuPainelOpenGL" name="painelGL" native="true"/>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MeuPainelOpenGL</class>
+   <extends>QWidget</extends>
+   <header>MeuPainelOpenGL.h</header>
+   <container>1</container>
+   <slots>
+    <slot>alterarLados(int)</slot>
+    <slot>alterarRaio(double)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>JanelaPrincipal</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>556</x>
+     <y>388</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>587</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>painelGL</receiver>
+   <slot>alterarLados(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>541</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>204</x>
+     <y>14</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>painelGL</receiver>
+   <slot>alterarRaio(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>560</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>442</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
