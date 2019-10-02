@@ -48,9 +48,14 @@ void PainelOpenGl::resizeGL(int width, int height){
     glOrtho(menorX, maiorX, menorY, maiorY,100,-100);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
 }
 void PainelOpenGl::paintGL(){
-    // Limpa a janela de visualiza��o com a cor branca
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    this->drawMesh();
+    shape.draw();
+  /*  // Limpa a janela de visualiza��o com a cor branca
     // e Limpa o buffer de teste de profundidade
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity(); // limpa todas as transforma��es
@@ -73,7 +78,7 @@ void PainelOpenGl::paintGL(){
         for (int i = 0; i < lados; ++i)
             glVertex2f(raio*cos(i*2*3.14159265/lados),
                        raio*sin(i*2*3.14159265/lados));
-    glEnd();
+    glEnd();*/
 }
 void PainelOpenGl::alterarLados(int l){
     if(lados!=l && l>=3 && l<=60){
@@ -100,5 +105,6 @@ void PainelOpenGl::drawMesh(){
         }
     }
     glEnd();
+
 }
 

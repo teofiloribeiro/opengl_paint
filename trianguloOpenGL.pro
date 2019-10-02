@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         janelaprincipal.cpp \
-    painelopengl.cpp
+    painelopengl.cpp \
+    shape.cpp
 
 HEADERS += \
         janelaprincipal.h \
-    painelopengl.h
+    painelopengl.h \
+    shape.h
 
 FORMS += \
         janelaprincipal.ui

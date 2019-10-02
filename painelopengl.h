@@ -1,16 +1,21 @@
 #ifndef PAINELOPENGL_H
 #define PAINELOPENGL_H
 
+#include "shape.h"
 #include <QGLWidget>
 #include <QtOpenGL>
+#include <iostream>
 
+using namespace std;
 class PainelOpenGl : public QGLWidget
 {
 Q_OBJECT
 public:
     //PainelOpenGl();
     explicit PainelOpenGl(QWidget *parent = 0);
+    Shape shape;
     void drawMesh();
+    vector<Shape> shapesList;
 
 protected:
     void initializeGL();

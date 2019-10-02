@@ -12,3 +12,5 @@ JanelaPrincipal::~JanelaPrincipal()
 {
     delete ui;
 }
+
+
