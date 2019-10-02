@@ -22,9 +22,16 @@ public:
    Shape(int side, double radius);
    void draw();
 
+
+   int getSide() const;
+   void setSide(int value);
+
+   double getRadius() const;
+   void setRadius(double value);
+
 private:
-    int side;
-    double radius;
+   int side;
+   double radius;
 };
 
 #endif // SHAPE_H

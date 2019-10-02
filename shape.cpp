@@ -16,9 +16,9 @@ void Shape::draw()
 {
     std::cout<<this->side << "\n";
     std::cout<<this->radius << "\n";
-    /*glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity(); // limpa todas as transforma��es*/
-    glTranslated(5.0, 5.0, 0.0);
+    ///glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   // glLoadIdentity(); // limpa todas as transforma��es*/
+
 
     glLineWidth(1);
     glColor3f(0,0.7f,0.7f);
@@ -35,4 +35,27 @@ void Shape::draw()
             glVertex2f(this->radius*cos(i*2*3.14159265/this->side),
                        this->radius*sin(i*2*3.14159265/this->side));
     glEnd();
+    glLoadIdentity();
 }
+
+
+int Shape::getSide() const
+{
+    return side;
+}
+
+void Shape::setSide(int value)
+{
+    side = value;
+}
+
+double Shape::getRadius() const
+{
+    return radius;
+}
+
+void Shape::setRadius(double value)
+{
+    radius = value;
+}
+

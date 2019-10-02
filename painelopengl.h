@@ -17,6 +17,10 @@ public:
     void drawMesh();
     void drawShape();
     vector<Shape> shapesList;
+    void scale();
+
+    double getZoom() const;
+    void setZoom(double value);
 
 protected:
     void initializeGL();
@@ -31,6 +35,7 @@ private:
     int lados;
     double raio;
     double menorX, maiorX, menorY, maiorY;
+    double zoom;
 };
 
 #endif // PAINELOPENGL_H

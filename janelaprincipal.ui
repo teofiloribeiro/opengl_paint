@@ -11,17 +11,20 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>JanelaPrincipal</string>
+   <string>PaintOpenGL</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="5" column="1">
-    <widget class="QPushButton" name="drawBtn">
+   <item row="6" column="1">
+    <widget class="QPushButton" name="zoomInBtn">
      <property name="text">
-      <string>Desenhar</string>
+      <string>Zoom+</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
+   <item row="4" column="1">
+    <widget class="QSpinBox" name="spinBox_2"/>
+   </item>
+   <item row="9" column="1">
     <widget class="QPushButton" name="pushButton">
      <property name="maximumSize">
       <size>
@@ -41,9 +44,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" rowspan="8">
-    <widget class="PainelOpenGl" name="painelGL" native="true"/>
-   </item>
    <item row="3" column="1">
     <widget class="QDoubleSpinBox" name="doubleSpinBox">
      <property name="decimals">
@@ -57,7 +57,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
+   <item row="8" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -87,8 +87,22 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QSpinBox" name="spinBox_2"/>
+   <item row="0" column="0" rowspan="10">
+    <widget class="PainelOpenGl" name="painelGL" native="true"/>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="drawBtn">
+     <property name="text">
+      <string>Desenhar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QPushButton" name="zoomOutBtn">
+     <property name="text">
+      <string>Zoom -</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

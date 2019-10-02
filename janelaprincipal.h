@@ -18,6 +18,10 @@ public:
 private slots:
     void on_drawBtn_clicked();
 
+    void on_zoomInBtn_clicked();
+
+    void on_zoomOutBtn_clicked();
+
 private:
     Ui::JanelaPrincipal *ui;
 };

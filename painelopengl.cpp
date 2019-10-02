@@ -8,6 +8,7 @@ PainelOpenGl::PainelOpenGl(QWidget *parent):
     setFormat(QGL::DoubleBuffer | QGL::DepthBuffer);
     lados = 3;
     raio = 1.0;
+    this->zoom = 1;
 }
 
 // Não utilizar updateOpenGL nesse metodo
@@ -89,17 +90,28 @@ void PainelOpenGl::paintGL(){
 }
 void PainelOpenGl::alterarLados(int l){
     if(lados!=l && l>=3 && l<=60){
+        this->shapesList.at(shapesList.size()-1).setSide(l);
         lados =l;
         updateGL();
     }
 }
 void PainelOpenGl::alterarRaio(double r){
     if(raio!= r && r>=1.0 && r<=5.0){
+        this->shapesList.at(shapesList.size()-1).setRadius(r);
         raio=r;
         updateGL();
     }
 }
 
+double PainelOpenGl::getZoom() const
+{
+    return zoom;
+}
+
+void PainelOpenGl::setZoom(double value)
+{
+    zoom = value;
+}
 
 // Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::drawMesh(){
@@ -118,8 +130,18 @@ void PainelOpenGl::drawMesh(){
 
 void PainelOpenGl::drawShape()
 {
+    qDebug()<<shapesList.size();
     if(this->shapesList.size() > 0){
-        this->shapesList.at(shapesList.size()-1).draw();
+        glTranslated(5.0, 5.0, 0.0);
+        glScalef(this->getZoom(),this->getZoom(),0);
+        this->shapesList.at(shapesList.size()-1).draw(); 
     }
+}
+
+void PainelOpenGl::scale()
+{
+    glLoadIdentity();
+    glScalef(5,5,0);
+    updateGL();
 }
 
