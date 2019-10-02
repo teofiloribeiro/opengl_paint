@@ -15,6 +15,9 @@ public:
     explicit JanelaPrincipal(QWidget *parent = 0);
     ~JanelaPrincipal();
 
+private slots:
+    void on_drawBtn_clicked();
+
 private:
     Ui::JanelaPrincipal *ui;
 };

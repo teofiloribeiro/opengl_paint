@@ -1,5 +1,6 @@
 #include "shape.h"
 
+#include<iostream>
 Shape::Shape()
 {
 
@@ -13,6 +14,8 @@ Shape::Shape(int side, double radius)
 
 void Shape::draw()
 {
+    std::cout<<this->side << "\n";
+    std::cout<<this->radius << "\n";
     /*glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity(); // limpa todas as transforma��es*/
     glTranslated(5.0, 5.0, 0.0);

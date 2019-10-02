@@ -15,6 +15,7 @@ public:
     explicit PainelOpenGl(QWidget *parent = 0);
     Shape shape;
     void drawMesh();
+    void drawShape();
     vector<Shape> shapesList;
 
 protected:

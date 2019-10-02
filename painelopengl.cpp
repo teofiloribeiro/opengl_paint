@@ -9,6 +9,8 @@ PainelOpenGl::PainelOpenGl(QWidget *parent):
     lados = 3;
     raio = 1.0;
 }
+
+// Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::initializeGL(){
     glShadeModel(GL_SMOOTH);
 
@@ -20,6 +22,8 @@ void PainelOpenGl::initializeGL(){
 
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
+
+// Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::resizeGL(int width, int height){
     this->menorX = 0, this->maiorX = 10, this->menorY = 0, this->maiorY = 10;
     glViewport( 0, 0, (GLint)width, (GLint)height );
@@ -49,12 +53,15 @@ void PainelOpenGl::resizeGL(int width, int height){
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+
 }
+// Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::paintGL(){
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     this->drawMesh();
-    shape.draw();
+    drawShape();
+    //shape.draw();
   /*  // Limpa a janela de visualiza��o com a cor branca
     // e Limpa o buffer de teste de profundidade
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -94,10 +101,11 @@ void PainelOpenGl::alterarRaio(double r){
 }
 
 
+// Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::drawMesh(){
     glLineWidth(10);
     glColor3f(0,0,0);
-    glPointSize(5.0f);
+    glPointSize(2.0f);
     glBegin(GL_POINTS);
     for(int i = this->menorX; i<= this->maiorX; i++){
         for(int j = this->menorY; j<= this->maiorY; j++){
@@ -106,5 +114,13 @@ void PainelOpenGl::drawMesh(){
     }
     glEnd();
 
+}
+
+void PainelOpenGl::drawShape()
+{
+    if(this->shapesList.size() > 0){
+        this->shapesList.at(shapesList.size()-1).draw();
+    updateGL();
+    }
 }
 

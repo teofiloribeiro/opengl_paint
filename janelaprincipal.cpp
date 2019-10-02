@@ -14,3 +14,10 @@ JanelaPrincipal::~JanelaPrincipal()
 }
 
 
+
+void JanelaPrincipal::on_drawBtn_clicked()
+{
+    Shape *shape = new Shape (ui->spinBox->value(),ui->doubleSpinBox->value());
+    ui->painelGL->shapesList.push_back(*shape);
+    ui->painelGL->drawShape();
+}
