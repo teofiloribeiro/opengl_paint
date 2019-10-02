@@ -60,7 +60,7 @@ void PainelOpenGl::paintGL(){
     glClear(GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     this->drawMesh();
-    drawShape();
+    this->drawShape();
     //shape.draw();
   /*  // Limpa a janela de visualiza��o com a cor branca
     // e Limpa o buffer de teste de profundidade
@@ -120,7 +120,6 @@ void PainelOpenGl::drawShape()
 {
     if(this->shapesList.size() > 0){
         this->shapesList.at(shapesList.size()-1).draw();
-    updateGL();
     }
 }
 
