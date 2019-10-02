@@ -9,7 +9,39 @@ PainelOpenGl::PainelOpenGl(QWidget *parent):
     lados = 3;
     raio = 1.0;
     this->zoom = 1;
+    this->yTranslated = 5.0;
 }
+
+double PainelOpenGl::getYTranslated() const
+{
+    return yTranslated;
+}
+
+void PainelOpenGl::setYTranslated(double value)
+{
+    yTranslated = value;
+}
+
+double PainelOpenGl::getXTranslated() const
+{
+    return xTranslated;
+}
+
+void PainelOpenGl::setXTranslated(double value)
+{
+    xTranslated = value;
+}
+
+double PainelOpenGl::getZoom() const
+{
+    return zoom;
+}
+
+void PainelOpenGl::setZoom(double value)
+{
+    zoom = value;
+}
+
 
 // Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::initializeGL(){
@@ -103,15 +135,6 @@ void PainelOpenGl::alterarRaio(double r){
     }
 }
 
-double PainelOpenGl::getZoom() const
-{
-    return zoom;
-}
-
-void PainelOpenGl::setZoom(double value)
-{
-    zoom = value;
-}
 
 // Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::drawMesh(){
@@ -130,11 +153,20 @@ void PainelOpenGl::drawMesh(){
 
 void PainelOpenGl::drawShape()
 {
+
+    /*glLineWidth(10);
+    glColor3f(0,0,0);
+    glPointSize(2.0f);
+    glBegin(GL_POINTS);
+        glVertex2f(5,1);
+    glEnd();
+
+    */
     qDebug()<<shapesList.size();
     if(this->shapesList.size() > 0){
-        glTranslated(5.0, 5.0, 0.0);
+        glTranslated(5.0, this->yTranslated, 0.0);
         glScalef(this->getZoom(),this->getZoom(),0);
-        this->shapesList.at(shapesList.size()-1).draw(); 
+        this->shapesList.at(shapesList.size()-1).draw();
     }
 }
 
@@ -143,5 +175,16 @@ void PainelOpenGl::scale()
     glLoadIdentity();
     glScalef(5,5,0);
     updateGL();
+}
+
+void PainelOpenGl::translated()
+{
+    this->yTranslated += 0.5;
+}
+
+void PainelOpenGl::mousePressEvent(QMouseEvent *event)
+{
+    qDebug()<<"X: "<<event->x();
+    qDebug()<<"Y: "<<event->y();
 }
 

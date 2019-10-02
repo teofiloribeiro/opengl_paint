@@ -18,9 +18,17 @@ public:
     void drawShape();
     vector<Shape> shapesList;
     void scale();
+    void translated();
+    void mousePressEvent(QMouseEvent * event);
 
     double getZoom() const;
     void setZoom(double value);
+
+    double getXTranslated() const;
+    void setXTranslated(double value);
+
+    double getYTranslated() const;
+    void setYTranslated(double value);
 
 protected:
     void initializeGL();
@@ -36,6 +44,7 @@ private:
     double raio;
     double menorX, maiorX, menorY, maiorY;
     double zoom;
+    double xTranslated, yTranslated;
 };
 
 #endif // PAINELOPENGL_H

@@ -29,7 +29,7 @@ void Shape::draw()
     glEnd();
 
     glLineWidth(2);
-    glColor3f(0,1,0);
+    glColor3f(1,1,0);
     glBegin(GL_LINE_LOOP);
         for (int i = 0; i < this->side; ++i)
             glVertex2f(this->radius*cos(i*2*3.14159265/this->side),

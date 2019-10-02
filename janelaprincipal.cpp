@@ -29,9 +29,18 @@ void JanelaPrincipal::on_zoomInBtn_clicked()
 
 void JanelaPrincipal::on_zoomOutBtn_clicked()
 {
-    if(ui->painelGL->getZoom() > 2){
+    if(ui->painelGL->getZoom() > 1){
          ui->painelGL->setZoom(ui->painelGL->getZoom()-1);
          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
          ui->painelGL->updateGL();
     }
 }
+
+void JanelaPrincipal::on_upBtn_clicked()
+{
+    ui->painelGL->translated();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    ui->painelGL->updateGL();
+}
+
+

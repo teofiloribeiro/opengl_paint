@@ -22,6 +22,8 @@ private slots:
 
     void on_zoomOutBtn_clicked();
 
+    void on_upBtn_clicked();
+
 private:
     Ui::JanelaPrincipal *ui;
 };
