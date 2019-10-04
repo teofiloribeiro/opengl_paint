@@ -25,7 +25,7 @@ void JanelaPrincipal::on_drawBtn_clicked()
 void JanelaPrincipal::on_upBtn_clicked()
 {
     ui->painelGL->translated(UP);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ui->painelGL->updateGL();
 }
 
@@ -34,21 +34,21 @@ void JanelaPrincipal::on_upBtn_clicked()
 void JanelaPrincipal::on_leftBtn_clicked()
 {
     ui->painelGL->translated(LEFT);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ui->painelGL->updateGL();
 }
 
 void JanelaPrincipal::on_rightBtn_clicked()
 {
     ui->painelGL->translated(RIGHT);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ui->painelGL->updateGL();
 }
 
 void JanelaPrincipal::on_downBtn_clicked()
 {
     ui->painelGL->translated(DOWN);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ui->painelGL->updateGL();
 }
 
@@ -58,7 +58,7 @@ void JanelaPrincipal::on_xScaleSpinBox_valueChanged(double arg1)
         ui->yScaleSpinBox->setValue(ui->xScaleSpinBox->value());
     }
     ui->painelGL->scale(ui->xScaleSpinBox->value(), ui->yScaleSpinBox->value());
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ui->painelGL->updateGL();
 }
 
@@ -69,6 +69,6 @@ void JanelaPrincipal::on_yScaleSpinBox_valueChanged(double arg1)
         ui->xScaleSpinBox->setValue(ui->yScaleSpinBox->value());
     }
     ui->painelGL->scale(ui->xScaleSpinBox->value(), ui->yScaleSpinBox->value());
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ui->painelGL->updateGL();
 }

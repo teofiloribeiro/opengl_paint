@@ -193,7 +193,7 @@ mouseCoordinate(0,0,0,0);*/
         for(int i = 0; i <= this->shapesList.size()-1; i++){
              glTranslated(this->shapesList.at(i).getXTranslated(), this->shapesList.at(i).getYTranslated(), 0.0);
              glScalef(this->shapesList.at(i).getXScale(),this->shapesList.at(i).getYScale(),0);
-             this->shapesList.at(shapesList.size()-1).draw();
+             this->shapesList.at(i).draw();
         }
         //glLoadIdentity();
     }
