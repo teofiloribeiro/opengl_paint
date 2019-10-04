@@ -21,23 +21,6 @@ void JanelaPrincipal::on_drawBtn_clicked()
     ui->painelGL->updateGL();
 }
 
-void JanelaPrincipal::on_zoomInBtn_clicked()
-{
-    ui->painelGL->setZoom(ui->painelGL->getZoom()+1);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    ui->painelGL->scale();
-    ui->painelGL->updateGL();
-}
-
-void JanelaPrincipal::on_zoomOutBtn_clicked()
-{
-    if(ui->painelGL->getZoom() > 1){
-         ui->painelGL->setZoom(ui->painelGL->getZoom()-1);
-         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-         ui->painelGL->scale();
-         ui->painelGL->updateGL();
-    }
-}
 
 void JanelaPrincipal::on_upBtn_clicked()
 {
@@ -65,6 +48,27 @@ void JanelaPrincipal::on_rightBtn_clicked()
 void JanelaPrincipal::on_downBtn_clicked()
 {
     ui->painelGL->translated(DOWN);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    ui->painelGL->updateGL();
+}
+
+void JanelaPrincipal::on_xScaleSpinBox_valueChanged(double arg1)
+{
+    if(ui->proportionalScaleCb->checkState()){
+        ui->yScaleSpinBox->setValue(ui->xScaleSpinBox->value());
+    }
+    ui->painelGL->scale(ui->xScaleSpinBox->value(), ui->yScaleSpinBox->value());
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    ui->painelGL->updateGL();
+}
+
+
+void JanelaPrincipal::on_yScaleSpinBox_valueChanged(double arg1)
+{
+    if(ui->proportionalScaleCb->checkState()){
+        ui->xScaleSpinBox->setValue(ui->yScaleSpinBox->value());
+    }
+    ui->painelGL->scale(ui->xScaleSpinBox->value(), ui->yScaleSpinBox->value());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ui->painelGL->updateGL();
 }

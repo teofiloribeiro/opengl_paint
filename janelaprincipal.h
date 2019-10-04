@@ -18,9 +18,6 @@ public:
 private slots:
     void on_drawBtn_clicked();
 
-    void on_zoomInBtn_clicked();
-
-    void on_zoomOutBtn_clicked();
 
     void on_upBtn_clicked();
 
@@ -29,6 +26,10 @@ private slots:
     void on_rightBtn_clicked();
 
     void on_downBtn_clicked();
+
+    void on_xScaleSpinBox_valueChanged(double arg1);
+
+    void on_yScaleSpinBox_valueChanged(double arg1);
 
 private:
     Ui::JanelaPrincipal *ui;

@@ -23,7 +23,7 @@ public:
     void drawShape();
     vector<Shape> shapesList;
     void translated(int direction);
-    void scale();
+    void scale(double x, double y);
 
     double mouseCoordinate(int width, int height, double mouseX, double mouseY);
 

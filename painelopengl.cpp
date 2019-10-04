@@ -199,10 +199,10 @@ mouseCoordinate(0,0,0,0);*/
     }
 }
 
-void PainelOpenGl::scale()
+void PainelOpenGl::scale(double x, double y)
 {
-   this->shapesList.at(shapesList.size()-1).setXScale(this->zoom);
-   this->shapesList.at(shapesList.size()-1).setYScale(this->zoom);
+   this->shapesList.at(shapesList.size()-1).setXScale(x);
+   this->shapesList.at(shapesList.size()-1).setYScale(y);
 }
 
 void PainelOpenGl::translated(int direction)
