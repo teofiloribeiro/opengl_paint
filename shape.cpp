@@ -10,6 +10,11 @@ Shape::Shape(int side, double radius)
 {
    this->side = side;
    this->radius = radius;
+   this->xTranslated = 5.0;
+   this->yTranslated = 5.0;
+   this->xScale = 1.0;
+   this->yScale = 1.0;
+
 }
 
 void Shape::draw()
@@ -57,5 +62,45 @@ double Shape::getRadius() const
 void Shape::setRadius(double value)
 {
     radius = value;
+}
+
+double Shape::getXTranslated() const
+{
+    return xTranslated;
+}
+
+void Shape::setXTranslated(double value)
+{
+    xTranslated = value;
+}
+
+double Shape::getYTranslated() const
+{
+    return yTranslated;
+}
+
+void Shape::setYTranslated(double value)
+{
+    yTranslated = value;
+}
+
+double Shape::getXScale() const
+{
+    return xScale;
+}
+
+void Shape::setXScale(double value)
+{
+    xScale = value;
+}
+
+double Shape::getYScale() const
+{
+    return yScale;
+}
+
+void Shape::setYScale(double value)
+{
+    yScale = value;
 }
 

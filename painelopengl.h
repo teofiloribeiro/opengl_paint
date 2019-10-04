@@ -6,6 +6,11 @@
 #include <QtOpenGL>
 #include <iostream>
 
+
+
+enum {
+    UP, LEFT, RIGHT , DOWN
+};
 using namespace std;
 class PainelOpenGl : public QGLWidget
 {
@@ -17,18 +22,15 @@ public:
     void drawMesh();
     void drawShape();
     vector<Shape> shapesList;
+    void translated(int direction);
     void scale();
-    void translated();
+
+    double mouseCoordinate(int width, int height, double mouseX, double mouseY);
+
     void mousePressEvent(QMouseEvent * event);
 
     double getZoom() const;
     void setZoom(double value);
-
-    double getXTranslated() const;
-    void setXTranslated(double value);
-
-    double getYTranslated() const;
-    void setYTranslated(double value);
 
 protected:
     void initializeGL();
@@ -44,7 +46,6 @@ private:
     double raio;
     double menorX, maiorX, menorY, maiorY;
     double zoom;
-    double xTranslated, yTranslated;
 };
 
 #endif // PAINELOPENGL_H

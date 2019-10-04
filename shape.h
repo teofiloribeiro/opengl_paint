@@ -29,9 +29,24 @@ public:
    double getRadius() const;
    void setRadius(double value);
 
+   double getXTranslated() const;
+   void setXTranslated(double value);
+
+   double getYTranslated() const;
+   void setYTranslated(double value);
+
+   double getXScale() const;
+   void setXScale(double value);
+
+   double getYScale() const;
+   void setYScale(double value);
+
 private:
    int side;
    double radius;
+   double xTranslated, yTranslated;
+   double xScale, yScale;
+
 };
 
 #endif // SHAPE_H

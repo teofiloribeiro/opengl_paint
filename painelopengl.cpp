@@ -9,27 +9,6 @@ PainelOpenGl::PainelOpenGl(QWidget *parent):
     lados = 3;
     raio = 1.0;
     this->zoom = 1;
-    this->yTranslated = 5.0;
-}
-
-double PainelOpenGl::getYTranslated() const
-{
-    return yTranslated;
-}
-
-void PainelOpenGl::setYTranslated(double value)
-{
-    yTranslated = value;
-}
-
-double PainelOpenGl::getXTranslated() const
-{
-    return xTranslated;
-}
-
-void PainelOpenGl::setXTranslated(double value)
-{
-    xTranslated = value;
 }
 
 double PainelOpenGl::getZoom() const
@@ -72,6 +51,7 @@ void PainelOpenGl::resizeGL(int width, int height){
         double difLargura = novaLargura - (maiorX - menorX);
         menorX = 0.0 - difLargura / 2.0;
         maiorX = 10 + difLargura / 2.0;
+
     }
     else
     {
@@ -88,9 +68,52 @@ void PainelOpenGl::resizeGL(int width, int height){
 
 
 }
+
+double PainelOpenGl::mouseCoordinate(int width, int height, double mouseX, double mouseY){
+    /*this->menorX = 0, this->maiorX = 10, this->menorY = 0, this->maiorY = 10;
+
+    width =89;
+    mouseX = 143;
+    height = 25;
+
+    // glViewport( 0, 0, (GLint)width, (GLint)height );
+
+   // glMatrixMode(GL_PROJECTION);
+    //glLoadIdentity();
+    //gluOrtho2D(-1,1,-1,1);
+    //glOrtho(-1,1,-1,1,180,-180);
+    if (width > height)
+    {
+        height = height?height:1;
+        double novaLargura = (maiorX - menorX) * width / height;
+        double difLargura = novaLargura - (maiorX - menorX);
+        menorX = mouseX - difLargura / 2.0;
+        //qDebug()<<menorX;
+        maiorX = mouseX + difLargura / 2.0;
+        //qDebug()<<maiorX;
+    }
+    else
+    {
+        width = width?width:1;
+        double novaAltura = (maiorY - menorY) * height / width;
+        double difAltura = novaAltura - (maiorY - menorY);
+        menorY = 0.0 - difAltura / 2.0;
+        maiorY = 10 + difAltura / 2.0;
+    }
+    //gluOrtho2D(menorX, maiorX, menorY, maiorY);
+   // glOrtho(menorX, maiorX, menorY, maiorY,100,-100);
+    //glMatrixMode(GL_MODELVIEW);
+    //LoadIdentity();
+
+    double teste;
+    teste = (mouseX / (89/ 2.0)) -1;
+    qDebug()<<teste;
+*/
+
+}
 // Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::paintGL(){
-    glClear(GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     this->drawMesh();
     this->drawShape();
@@ -123,14 +146,14 @@ void PainelOpenGl::paintGL(){
 void PainelOpenGl::alterarLados(int l){
     if(lados!=l && l>=3 && l<=60){
         this->shapesList.at(shapesList.size()-1).setSide(l);
-        lados =l;
+        //lados =l;
         updateGL();
     }
 }
 void PainelOpenGl::alterarRaio(double r){
     if(raio!= r && r>=1.0 && r<=5.0){
         this->shapesList.at(shapesList.size()-1).setRadius(r);
-        raio=r;
+       // raio=r;
         updateGL();
     }
 }
@@ -153,33 +176,48 @@ void PainelOpenGl::drawMesh(){
 
 void PainelOpenGl::drawShape()
 {
-
-    /*glLineWidth(10);
-    glColor3f(0,0,0);
+/*glLoadIdentity();
+    glLineWidth(10);
+    glColor3f(1,0,0);
     glPointSize(2.0f);
     glBegin(GL_POINTS);
         glVertex2f(5,1);
     glEnd();
 
-    */
-    qDebug()<<shapesList.size();
+glLoadIdentity();
+
+mouseCoordinate(0,0,0,0);*/
+
+
     if(this->shapesList.size() > 0){
-        glTranslated(5.0, this->yTranslated, 0.0);
-        glScalef(this->getZoom(),this->getZoom(),0);
-        this->shapesList.at(shapesList.size()-1).draw();
+        for(int i = 0; i <= this->shapesList.size()-1; i++){
+             glTranslated(this->shapesList.at(i).getXTranslated(), this->shapesList.at(i).getYTranslated(), 0.0);
+             glScalef(this->shapesList.at(i).getXScale(),this->shapesList.at(i).getYScale(),0);
+             this->shapesList.at(shapesList.size()-1).draw();
+        }
+        //glLoadIdentity();
     }
 }
 
 void PainelOpenGl::scale()
 {
-    glLoadIdentity();
-    glScalef(5,5,0);
-    updateGL();
+   this->shapesList.at(shapesList.size()-1).setXScale(this->zoom);
+   this->shapesList.at(shapesList.size()-1).setYScale(this->zoom);
 }
 
-void PainelOpenGl::translated()
+void PainelOpenGl::translated(int direction)
 {
-    this->yTranslated += 0.5;
+
+    switch (direction) {
+    case UP: this->shapesList.at(shapesList.size()-1).setYTranslated(this->shapesList.at(shapesList.size()-1).getYTranslated()+0.5);
+        break;
+    case LEFT:this->shapesList.at(shapesList.size()-1).setXTranslated(this->shapesList.at(shapesList.size()-1).getXTranslated()-0.5);
+        break;
+    case RIGHT:this->shapesList.at(shapesList.size()-1).setXTranslated(this->shapesList.at(shapesList.size()-1).getXTranslated()+0.5);
+        break;
+    case DOWN: this->shapesList.at(shapesList.size()-1).setYTranslated(this->shapesList.at(shapesList.size()-1).getYTranslated()-0.5);
+        break;
+    }
 }
 
 void PainelOpenGl::mousePressEvent(QMouseEvent *event)

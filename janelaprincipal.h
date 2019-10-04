@@ -24,6 +24,12 @@ private slots:
 
     void on_upBtn_clicked();
 
+    void on_leftBtn_clicked();
+
+    void on_rightBtn_clicked();
+
+    void on_downBtn_clicked();
+
 private:
     Ui::JanelaPrincipal *ui;
 };
