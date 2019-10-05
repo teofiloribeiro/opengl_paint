@@ -72,3 +72,16 @@ void JanelaPrincipal::on_yScaleSpinBox_valueChanged(double arg1)
    // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ui->painelGL->updateGL();
 }
+
+void JanelaPrincipal::on_rotationDial_sliderMoved(int position)
+{
+    ui->painelGL->rotate(position);
+    ui->painelGL->updateGL();
+}
+
+
+void JanelaPrincipal::on_rotationDial_sliderPressed()
+{
+    ui->painelGL->rotate(ui->rotationDial->value());
+    ui->painelGL->updateGL();
+}

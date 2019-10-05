@@ -193,6 +193,7 @@ mouseCoordinate(0,0,0,0);*/
         for(int i = 0; i <= this->shapesList.size()-1; i++){
              glTranslated(this->shapesList.at(i).getXTranslated(), this->shapesList.at(i).getYTranslated(), 0.0);
              glScalef(this->shapesList.at(i).getXScale(),this->shapesList.at(i).getYScale(),0);
+             glRotatef(this->shapesList.at(i).getAngle(),0,0,1);
              this->shapesList.at(i).draw();
         }
         //glLoadIdentity();
@@ -203,6 +204,11 @@ void PainelOpenGl::scale(double x, double y)
 {
    this->shapesList.at(shapesList.size()-1).setXScale(x);
    this->shapesList.at(shapesList.size()-1).setYScale(y);
+}
+
+void PainelOpenGl::rotate(double angle)
+{
+   this->shapesList.at(shapesList.size()-1).setAngle(angle);
 }
 
 void PainelOpenGl::translated(int direction)
@@ -224,5 +230,10 @@ void PainelOpenGl::mousePressEvent(QMouseEvent *event)
 {
     qDebug()<<"X: "<<event->x();
     qDebug()<<"Y: "<<event->y();
+}
+
+void PainelOpenGl::keyPressEvent(QKeyEvent *event)
+{
+    qDebug()<<"oii";
 }
 

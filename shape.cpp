@@ -14,7 +14,7 @@ Shape::Shape(int side, double radius)
    this->yTranslated = 5.0;
    this->xScale = 1.0;
    this->yScale = 1.0;
-
+   this->angle = 0;
 }
 
 void Shape::draw()
@@ -96,5 +96,15 @@ double Shape::getYScale() const
 void Shape::setYScale(double value)
 {
     yScale = value;
+}
+
+double Shape::getAngle() const
+{
+    return angle;
+}
+
+void Shape::setAngle(double value)
+{
+    angle = value;
 }
 

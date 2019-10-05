@@ -31,6 +31,10 @@ private slots:
 
     void on_yScaleSpinBox_valueChanged(double arg1);
 
+    void on_rotationDial_sliderMoved(int position);
+
+    void on_rotationDial_sliderPressed();
+
 private:
     Ui::JanelaPrincipal *ui;
 };

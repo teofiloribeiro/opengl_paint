@@ -41,12 +41,15 @@ public:
    double getYScale() const;
    void setYScale(double value);
 
+   double getAngle() const;
+   void setAngle(double value);
+
 private:
    int side;
    double radius;
    double xTranslated, yTranslated;
    double xScale, yScale;
-
+   double angle;
 };
 
 #endif // SHAPE_H

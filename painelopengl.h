@@ -24,10 +24,14 @@ public:
     vector<Shape> shapesList;
     void translated(int direction);
     void scale(double x, double y);
+    void rotate(double angle);
+
 
     double mouseCoordinate(int width, int height, double mouseX, double mouseY);
 
     void mousePressEvent(QMouseEvent * event);
+
+    void  keyPressEvent(QKeyEvent * event);
 
     double getZoom() const;
     void setZoom(double value);
