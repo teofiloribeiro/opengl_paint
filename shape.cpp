@@ -15,10 +15,12 @@ Shape::Shape(int side, double radius)
    this->xScale = 1.0;
    this->yScale = 1.0;
    this->angle = 0;
+   this->isFocused = true;
 }
 
 void Shape::draw()
 {
+
     glLineWidth(1);
     glColor3f(0,0.7f,0.7f);
     glBegin(GL_POLYGON);
@@ -34,6 +36,21 @@ void Shape::draw()
             glVertex2f(this->radius*cos(i*2*3.14159265/this->side),
                        this->radius*sin(i*2*3.14159265/this->side));
     glEnd();
+
+    //glEnable(GL_LINE_SMOOTH);
+    if(this->isFocused){
+        glEnable(GL_LINE_STIPPLE);
+        glLineStipple(1, 0xAAAA);
+        glLineWidth(2);
+        glPointSize(6);
+        glColor3f(0,0,0);
+        glBegin(GL_LINE_LOOP);
+        for (int i = 0; i < this->side; ++i)
+            glVertex2f((this->radius+0.2)*cos(i*2*3.14159265/this->side),
+                       (this->radius+0.2)*sin(i*2*3.14159265/this->side));
+        glEnd();
+        glDisable(GL_LINE_STIPPLE);
+    }
     glLoadIdentity();
 }
 
@@ -106,5 +123,15 @@ double Shape::getAngle() const
 void Shape::setAngle(double value)
 {
     angle = value;
+}
+
+boolean Shape::getIsFocused() const
+{
+    return isFocused;
+}
+
+void Shape::setIsFocused(const boolean &value)
+{
+    isFocused = value;
 }
 

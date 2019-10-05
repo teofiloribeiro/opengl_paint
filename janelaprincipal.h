@@ -35,6 +35,13 @@ private slots:
 
     void on_rotationDial_sliderPressed();
 
+    void on_focusPreviousBtn_clicked();
+
+    void on_focusNextBtn_clicked();
+
+
+    void on_eraseBtn_clicked();
+
 private:
     Ui::JanelaPrincipal *ui;
 };

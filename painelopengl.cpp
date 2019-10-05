@@ -9,6 +9,7 @@ PainelOpenGl::PainelOpenGl(QWidget *parent):
     lados = 3;
     raio = 1.0;
     this->zoom = 1;
+    this->shapeFocus = 0;
 }
 
 double PainelOpenGl::getZoom() const
@@ -21,6 +22,15 @@ void PainelOpenGl::setZoom(double value)
     zoom = value;
 }
 
+int PainelOpenGl::getShapeFocus() const
+{
+    return shapeFocus;
+}
+
+void PainelOpenGl::setShapeFocus(int value)
+{
+    shapeFocus = value;
+}
 
 // Não utilizar updateOpenGL nesse metodo
 void PainelOpenGl::initializeGL(){
@@ -145,18 +155,19 @@ void PainelOpenGl::paintGL(){
 }
 void PainelOpenGl::alterarLados(int l){
     if(lados!=l && l>=3 && l<=60){
-        this->shapesList.at(shapesList.size()-1).setSide(l);
+        this->shapesList.at(this->shapeFocus).setSide(l);
         //lados =l;
         updateGL();
     }
 }
 void PainelOpenGl::alterarRaio(double r){
     if(raio!= r && r>=1.0 && r<=5.0){
-        this->shapesList.at(shapesList.size()-1).setRadius(r);
+        this->shapesList.at(this->shapeFocus).setRadius(r);
        // raio=r;
         updateGL();
     }
 }
+
 
 
 // Não utilizar updateOpenGL nesse metodo
@@ -188,9 +199,8 @@ glLoadIdentity();
 
 mouseCoordinate(0,0,0,0);*/
 
-
     if(this->shapesList.size() > 0){
-        for(int i = 0; i <= this->shapesList.size()-1; i++){
+        for(int i = 0; i <= shapesList.size()-1; i++){
              glTranslated(this->shapesList.at(i).getXTranslated(), this->shapesList.at(i).getYTranslated(), 0.0);
              glScalef(this->shapesList.at(i).getXScale(),this->shapesList.at(i).getYScale(),0);
              glRotatef(this->shapesList.at(i).getAngle(),0,0,1);
@@ -202,26 +212,27 @@ mouseCoordinate(0,0,0,0);*/
 
 void PainelOpenGl::scale(double x, double y)
 {
-   this->shapesList.at(shapesList.size()-1).setXScale(x);
-   this->shapesList.at(shapesList.size()-1).setYScale(y);
+   this->shapesList.at(this->shapeFocus).setXScale(x);
+   this->shapesList.at(this->shapeFocus).setYScale(y);
 }
 
 void PainelOpenGl::rotate(double angle)
 {
-   this->shapesList.at(shapesList.size()-1).setAngle(angle);
+    this->shapesList.at(this->shapeFocus).setAngle(angle);
 }
+
 
 void PainelOpenGl::translated(int direction)
 {
 
     switch (direction) {
-    case UP: this->shapesList.at(shapesList.size()-1).setYTranslated(this->shapesList.at(shapesList.size()-1).getYTranslated()+0.5);
+    case UP: this->shapesList.at(this->shapeFocus).setYTranslated(this->shapesList.at(this->shapeFocus).getYTranslated()+0.5);
         break;
-    case LEFT:this->shapesList.at(shapesList.size()-1).setXTranslated(this->shapesList.at(shapesList.size()-1).getXTranslated()-0.5);
+    case LEFT:this->shapesList.at(this->shapeFocus).setXTranslated(this->shapesList.at(this->shapeFocus).getXTranslated()-0.5);
         break;
-    case RIGHT:this->shapesList.at(shapesList.size()-1).setXTranslated(this->shapesList.at(shapesList.size()-1).getXTranslated()+0.5);
+    case RIGHT:this->shapesList.at(this->shapeFocus).setXTranslated(this->shapesList.at(this->shapeFocus).getXTranslated()+0.5);
         break;
-    case DOWN: this->shapesList.at(shapesList.size()-1).setYTranslated(this->shapesList.at(shapesList.size()-1).getYTranslated()-0.5);
+    case DOWN: this->shapesList.at(this->shapeFocus).setYTranslated(this->shapesList.at(this->shapeFocus).getYTranslated()-0.5);
         break;
     }
 }
@@ -232,8 +243,8 @@ void PainelOpenGl::mousePressEvent(QMouseEvent *event)
     qDebug()<<"Y: "<<event->y();
 }
 
+
 void PainelOpenGl::keyPressEvent(QKeyEvent *event)
 {
-    qDebug()<<"oii";
 }
 

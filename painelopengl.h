@@ -16,7 +16,6 @@ class PainelOpenGl : public QGLWidget
 {
 Q_OBJECT
 public:
-    //PainelOpenGl();
     explicit PainelOpenGl(QWidget *parent = 0);
     Shape shape;
     void drawMesh();
@@ -26,7 +25,6 @@ public:
     void scale(double x, double y);
     void rotate(double angle);
 
-
     double mouseCoordinate(int width, int height, double mouseX, double mouseY);
 
     void mousePressEvent(QMouseEvent * event);
@@ -35,6 +33,9 @@ public:
 
     double getZoom() const;
     void setZoom(double value);
+
+    int getShapeFocus() const;
+    void setShapeFocus(int value);
 
 protected:
     void initializeGL();
@@ -50,6 +51,8 @@ private:
     double raio;
     double menorX, maiorX, menorY, maiorY;
     double zoom;
+    int shapeFocus;
+
 };
 
 #endif // PAINELOPENGL_H

@@ -44,12 +44,16 @@ public:
    double getAngle() const;
    void setAngle(double value);
 
+   boolean getIsFocused() const;
+   void setIsFocused(const boolean &value);
+
 private:
    int side;
    double radius;
    double xTranslated, yTranslated;
    double xScale, yScale;
    double angle;
+   boolean isFocused;
 };
 
 #endif // SHAPE_H
