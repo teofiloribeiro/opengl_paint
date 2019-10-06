@@ -284,32 +284,13 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>80</y>
-     <width>101</width>
-     <height>132</height>
+     <x>660</x>
+     <y>90</y>
+     <width>111</width>
+     <height>151</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <widget class="QSpinBox" name="spinBox">
-      <property name="maximumSize">
-       <size>
-        <width>50</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="minimum">
-       <number>3</number>
-      </property>
-      <property name="maximum">
-       <number>60</number>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="0">
      <widget class="QPushButton" name="widthBtn">
       <property name="text">
@@ -324,7 +305,23 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
+    <item row="5" column="0">
+     <widget class="QCheckBox" name="meshCheckBox">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string>Malha</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
      <widget class="QCheckBox" name="proportionalScaleCb">
       <property name="maximumSize">
        <size>
@@ -379,19 +376,6 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="maximumSize">
-       <size>
-        <width>32</width>
-        <height>16</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Lados:</string>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="1">
      <widget class="QDoubleSpinBox" name="xScaleSpinBox">
       <property name="maximumSize">
@@ -417,19 +401,35 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <widget class="QCheckBox" name="meshCheckBox">
+    <item row="3" column="0">
+     <widget class="QLabel" name="label">
+      <property name="maximumSize">
+       <size>
+        <width>32</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Lados:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QSpinBox" name="spinBox">
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="text">
-       <string>Malha</string>
+      <property name="minimum">
+       <number>3</number>
       </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
+      <property name="maximum">
+       <number>60</number>
       </property>
      </widget>
     </item>
