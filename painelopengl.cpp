@@ -68,7 +68,8 @@ void PainelOpenGl::resizeGL(int width, int height){
         menorY = 0.0 - difAltura / 2.0;
         maiorY = 10 + difAltura / 2.0;
     }
-    gluOrtho2D(menorX, maiorX, menorY, maiorY);
+    //gluOrtho2D(menorX, maiorX, menorY, maiorY);
+    glOrtho(menorX, maiorX, menorY, maiorY,100,-100);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
