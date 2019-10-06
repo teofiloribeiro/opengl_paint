@@ -2,9 +2,12 @@
 #define PAINELOPENGL_H
 
 #include "shape.h"
+#include<QColor>
+#include<QColorDialog>
 #include <QGLWidget>
 #include <QtOpenGL>
 #include <iostream>
+#include <GL/glu.h>
 
 
 
@@ -24,7 +27,7 @@ public:
     void translated(int direction);
     void scale(double x, double y);
     void rotate(double angle);
-
+    void zoomScale(double zoom);
     double mouseCoordinate(int width, int height, double mouseX, double mouseY);
 
     void mousePressEvent(QMouseEvent * event);
@@ -37,14 +40,15 @@ public:
     int getShapeFocus() const;
     void setShapeFocus(int value);
 
+    boolean getIsDrawMesh() const;
+    void setIsDrawMesh(const boolean &value);
+
 protected:
     void initializeGL();
     void resizeGL(int w, int h);
     void paintGL();
 
 public slots:
-    void alterarLados(int l);
-    void alterarRaio(double r);
 
 private:
     int lados;
@@ -52,6 +56,7 @@ private:
     double menorX, maiorX, menorY, maiorY;
     double zoom;
     int shapeFocus;
+    boolean isDrawMesh;
 
 };
 

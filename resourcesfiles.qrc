@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/23910.png</file>
+        <file>icons/54349.png</file>
+        <file>icons/67351.png</file>
+        <file>icons/d_arrow_icon.png</file>
+        <file>icons/erase.png</file>
+        <file>icons/l_arrow_icon.png</file>
+        <file>icons/perfect-circle_icon-icons.com_53928.png</file>
+        <file>icons/r_arrow_icon.png</file>
+        <file>icons/squareroundedemptyoutlinedbuttonshape_80680.png</file>
+        <file>icons/u_arrow_icon.png</file>
+        <file>icons/ic_border_color_black_24dp.png</file>
+        <file>icons/ic_brush_black_24dp.png</file>
+        <file>icons/ic_color_lens_black_24dp.png</file>
+        <file>icons/ic_colorize_black_24dp.png</file>
+        <file>icons/ic_delete_black_24dp.png</file>
+        <file>icons/ic_folder_black_24dp.png</file>
+        <file>icons/ic_folder_open_black_24dp.png</file>
+        <file>icons/ic_format_paint_black_24dp.png</file>
+        <file>icons/ic_insert_drive_file_black_24dp.png</file>
+        <file>icons/ic_list_black_24dp.png</file>
+        <file>icons/ic_rotate_left_black_24dp.png</file>
+        <file>icons/ic_rotate_right_black_24dp.png</file>
+        <file>icons/ic_search_black_24dp.png</file>
+        <file>icons/ic_settings_applications_black_24dp.png</file>
+        <file>icons/ic_settings_overscan_black_24dp.png</file>
+        <file>icons/ic_transform_black_24dp.png</file>
+        <file>icons/ic_vertical_align_bottom_black_24dp.png</file>
+        <file>icons/ic_exit_to_app_black_24dp.png</file>
+        <file>icons/View-Height-icon.png</file>
+        <file>icons/View-Width-icon.png</file>
+        <file>icons/ic_skip_next_black_36dp.png</file>
+        <file>icons/ic_skip_previous_black_36dp.png</file>
+    </qresource>
+</RCC>

@@ -2,6 +2,8 @@
 #define JANELAPRINCIPAL_H
 
 #include <QGLWidget>
+#include <QFileDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class JanelaPrincipal;
@@ -14,6 +16,12 @@ class JanelaPrincipal : public QWidget
 public:
     explicit JanelaPrincipal(QWidget *parent = 0);
     ~JanelaPrincipal();
+
+    QColor getColor() const;
+    void setColor(const QColor &value);
+
+    QColor getLineColor() const;
+    void setLineColor(const QColor &value);
 
 private slots:
     void on_drawBtn_clicked();
@@ -39,11 +47,34 @@ private slots:
 
     void on_focusNextBtn_clicked();
 
-
     void on_eraseBtn_clicked();
+
+    void on_colorBtn_clicked();
+
+    void on_lineColorBtn_clicked();
+
+    void on_openAction_triggered();
+
+    void on_saveAction_triggered();
+
+    void on_drawCircleBtn_clicked();
+
+    void on_drawSquareBtn_clicked();
+
+    void on_spinBox_valueChanged(int arg1);
+
+    void on_actionNovo_triggered();
+
+    void on_meshCheckBox_stateChanged(int arg1);
+
+    void on_zoomInBtn_clicked();
+
+    void on_zoomOutBtn_clicked();
 
 private:
     Ui::JanelaPrincipal *ui;
+    QColor color;
+    QColor lineColor;
 };
 
 #endif // JANELAPRINCIPAL_H

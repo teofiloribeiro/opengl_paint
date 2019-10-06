@@ -16,28 +16,31 @@ Shape::Shape(int side, double radius)
    this->yScale = 1.0;
    this->angle = 0;
    this->isFocused = true;
+   this->lineColor = Qt::black;
 }
 
 void Shape::draw()
 {
+    if(this->color.isValid()){
+        glLineWidth(1);
+        glColor3f(this->color.redF(),this->color.greenF(),this->color.blueF());
+        glBegin(GL_POLYGON);
+        for (int i = 0; i < this->side; ++i){
+            glVertex2f(this->radius*cos(i*2*3.14159265/this->side), this->radius*sin(i*2*3.14159265/this->side));
+        }
+        glEnd();
+     }
 
-    glLineWidth(1);
-    glColor3f(0,0.7f,0.7f);
-    glBegin(GL_POLYGON);
-        for (int i = 0; i < this->side; ++i)
-            glVertex2f(this->radius*cos(i*2*3.14159265/this->side),
-                       this->radius*sin(i*2*3.14159265/this->side));
-    glEnd();
+    if(this->lineColor.isValid()){
+        glLineWidth(2);
+        glColor3f(this->lineColor.redF(),this->lineColor.greenF(),this->lineColor.blueF());
+        glBegin(GL_LINE_LOOP);
+        for (int i = 0; i < this->side; ++i){
+            glVertex2f(this->radius*cos(i*2*3.14159265/this->side), this->radius*sin(i*2*3.14159265/this->side));
+        }
+        glEnd();
+    }
 
-    glLineWidth(2);
-    glColor3f(1,1,0);
-    glBegin(GL_LINE_LOOP);
-        for (int i = 0; i < this->side; ++i)
-            glVertex2f(this->radius*cos(i*2*3.14159265/this->side),
-                       this->radius*sin(i*2*3.14159265/this->side));
-    glEnd();
-
-    //glEnable(GL_LINE_SMOOTH);
     if(this->isFocused){
         glEnable(GL_LINE_STIPPLE);
         glLineStipple(1, 0xAAAA);
@@ -133,5 +136,25 @@ boolean Shape::getIsFocused() const
 void Shape::setIsFocused(const boolean &value)
 {
     isFocused = value;
+}
+
+QColor Shape::getColor() const
+{
+    return color;
+}
+
+void Shape::setColor(const QColor &value)
+{
+    color = value;
+}
+
+QColor Shape::getLineColor() const
+{
+    return lineColor;
+}
+
+void Shape::setLineColor(const QColor &value)
+{
+    lineColor = value;
 }
 

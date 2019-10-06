@@ -3,6 +3,7 @@
 
 #include <GL/gl.h>
 #include <cmath>
+#include<QColor>
 
 class point {
 public:
@@ -47,6 +48,12 @@ public:
    boolean getIsFocused() const;
    void setIsFocused(const boolean &value);
 
+   QColor getColor() const;
+   void setColor(const QColor &value);
+
+   QColor getLineColor() const;
+   void setLineColor(const QColor &value);
+
 private:
    int side;
    double radius;
@@ -54,6 +61,8 @@ private:
    double xScale, yScale;
    double angle;
    boolean isFocused;
+   QColor color;
+   QColor lineColor;
 };
 
 #endif // SHAPE_H

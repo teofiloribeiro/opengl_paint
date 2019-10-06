@@ -36,3 +36,6 @@ HEADERS += \
 
 FORMS += \
         janelaprincipal.ui
+
+RESOURCES += \
+    resourcesfiles.qrc

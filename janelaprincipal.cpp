@@ -15,14 +15,48 @@ JanelaPrincipal::~JanelaPrincipal()
 
 void JanelaPrincipal::on_drawBtn_clicked()
 {
-    Shape *shape = new Shape (ui->spinBox->value(),ui->doubleSpinBox->value());
+
+    Shape *shape = new Shape (3,1);
+    shape->setColor(this->color);
+    shape->setLineColor(this->lineColor);
     ui->painelGL->shapesList.push_back(*shape);
     ui->painelGL->setShapeFocus(ui->painelGL->shapesList.size()-1);
     if(ui->painelGL->shapesList.size() > 1){
         ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()-1).setIsFocused(false);
     }
     ui->painelGL->updateGL();
+    ui->spinBox->setValue(3);
 }
+
+void JanelaPrincipal::on_drawCircleBtn_clicked()
+{
+    Shape *shape = new Shape (60,1);
+    shape->setColor(this->color);
+    shape->setLineColor(this->lineColor);
+    ui->painelGL->shapesList.push_back(*shape);
+    ui->painelGL->setShapeFocus(ui->painelGL->shapesList.size()-1);
+    if(ui->painelGL->shapesList.size() > 1){
+        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()-1).setIsFocused(false);
+    }
+    ui->painelGL->updateGL();
+    ui->spinBox->setValue(60);
+
+}
+
+void JanelaPrincipal::on_drawSquareBtn_clicked()
+{
+    Shape *shape = new Shape (4,1);
+    shape->setColor(this->color);
+    shape->setLineColor(this->lineColor);
+    ui->painelGL->shapesList.push_back(*shape);
+    ui->painelGL->setShapeFocus(ui->painelGL->shapesList.size()-1);
+    if(ui->painelGL->shapesList.size() > 1){
+        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()-1).setIsFocused(false);
+    }
+    ui->painelGL->updateGL();
+    ui->spinBox->setValue(4);
+}
+
 
 
 void JanelaPrincipal::on_upBtn_clicked()
@@ -141,4 +175,183 @@ void JanelaPrincipal::on_eraseBtn_clicked()
         on_focusNextBtn_clicked();
         ui->painelGL->updateGL();
     }
+}
+
+void JanelaPrincipal::on_colorBtn_clicked()
+{
+    this->color = QColorDialog::getColor(Qt::white,this);
+    if(ui->painelGL->shapesList.size() > 0){
+       glColor4f(color.redF(), color.greenF(), color.blueF(), color.alphaF());
+       ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setColor(color);
+    }
+    if(color.isValid())
+        ui->colorBtn->setStyleSheet("background-color: " + color.name());
+
+}
+
+void JanelaPrincipal::on_lineColorBtn_clicked()
+{
+    this->lineColor = QColorDialog::getColor(Qt::white,this);
+    if(ui->painelGL->shapesList.size() > 0){
+       glColor4f(lineColor.redF(), lineColor.greenF(), lineColor.blueF(), lineColor.alphaF());
+       ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setLineColor(lineColor);
+    }
+    if(color.isValid())
+        ui->lineColorBtn->setStyleSheet("background-color: " + lineColor.name());
+}
+
+QColor JanelaPrincipal::getLineColor() const
+{
+    return lineColor;
+}
+
+void JanelaPrincipal::setLineColor(const QColor &value)
+{
+    lineColor = value;
+}
+
+
+QColor JanelaPrincipal::getColor() const
+{
+    return color;
+}
+
+void JanelaPrincipal::setColor(const QColor &value)
+{
+    color = value;
+}
+
+
+void JanelaPrincipal::on_openAction_triggered()
+{
+    QString filter = "Arquivos paintGl (*.ptgl)";
+    QString openFile = QFileDialog::getOpenFileName(this, "Abrir Arquivos", QDir::homePath(), filter);
+    QFile file(openFile);
+    QTextStream in(&file);
+    QColor loadColor;
+    QColor loadLineColor;
+    QString data;
+
+    if(!file.open(QFile::ReadOnly|QFile::Text)){
+       QMessageBox::warning(this,"Erro", "Erro Open File");
+    }
+
+
+    while((data = in.readLine()) != NULL){
+        if(data != "shape"){
+           Shape *shape = new Shape ();
+           shape->setSide(data.toInt());
+           if((data = in.readLine()) != NULL)
+           shape->setRadius(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           shape->setXTranslated(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           shape->setYTranslated(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           shape->setXScale(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           shape->setYScale(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           shape->setAngle(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           shape->setIsFocused(false);
+           if((data = in.readLine()) != NULL)
+           loadColor.setRedF(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           loadColor.setGreenF(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           loadColor.setBlueF(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           loadColor.setAlphaF(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           loadLineColor.setRedF(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           loadLineColor.setGreenF(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           loadLineColor.setBlueF(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           loadLineColor.setAlphaF(data.toDouble());
+           if(loadColor.isValid())
+           shape->setColor(loadColor);
+           if(loadLineColor.isValid())
+           shape->setLineColor(loadLineColor);
+
+           ui->painelGL->shapesList.push_back(*shape);
+        }
+
+    }
+    ui->painelGL->updateGL();
+}
+
+
+void JanelaPrincipal::on_saveAction_triggered()
+{
+
+    QString filter = "Arquivos paintGL (*.ptgl)";
+    QString path = QFileDialog::getSaveFileName(this, "Salvar Arquivos", QDir::homePath(), filter);
+    QFile file (path);
+    if(!file.open(QFile::WriteOnly|QFile::Text)){
+        QMessageBox::warning(this,"Erro", "Erro Save File");
+    }
+    QTextStream out(&file);
+
+    if(ui->painelGL->shapesList.size() > 0){
+        for(int i = 0; i <ui->painelGL->shapesList.size(); i++){
+            out << "shape" <<endl;
+            out << ui->painelGL->shapesList.at(i).getSide() <<endl;
+            out << ui->painelGL->shapesList.at(i).getRadius() <<endl;
+            out << ui->painelGL->shapesList.at(i).getXTranslated() <<endl;
+            out << ui->painelGL->shapesList.at(i).getYTranslated() <<endl;
+            out << ui->painelGL->shapesList.at(i).getXScale() <<endl;
+            out << ui->painelGL->shapesList.at(i).getYScale() <<endl;
+            out << ui->painelGL->shapesList.at(i).getAngle() <<endl;
+            out << ui->painelGL->shapesList.at(i).getIsFocused() <<endl;
+            out << ui->painelGL->shapesList.at(i).getColor().redF() <<endl;
+            out << ui->painelGL->shapesList.at(i).getColor().greenF() <<endl;
+            out << ui->painelGL->shapesList.at(i).getColor().blueF() <<endl;
+            out << ui->painelGL->shapesList.at(i).getColor().alphaF() <<endl;
+            out << ui->painelGL->shapesList.at(i).getLineColor().redF() <<endl;
+            out << ui->painelGL->shapesList.at(i).getLineColor().greenF() <<endl;
+            out << ui->painelGL->shapesList.at(i).getLineColor().blueF() <<endl;
+            out << ui->painelGL->shapesList.at(i).getLineColor().alphaF() <<endl;
+        }
+        file.flush();
+        file.close();
+    }
+
+}
+
+void JanelaPrincipal::on_spinBox_valueChanged(int arg1)
+{
+    if(ui->painelGL->shapesList.size() > 0){
+        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setSide(ui->spinBox->value());
+       ui->painelGL->updateGL();
+    }
+}
+
+void JanelaPrincipal::on_actionNovo_triggered()
+{
+   ui->painelGL->shapesList.clear();
+   ui->painelGL->updateGL();
+}
+
+
+
+void JanelaPrincipal::on_meshCheckBox_stateChanged(int arg1)
+{
+
+     ui->painelGL->setIsDrawMesh(arg1);
+     ui->painelGL->updateGL();
+}
+
+void JanelaPrincipal::on_zoomInBtn_clicked()
+{
+    ui->painelGL->setZoom(ui->painelGL->getZoom()+1);
+    ui->painelGL->zoomScale(ui->painelGL->getZoom());
+}
+
+void JanelaPrincipal::on_zoomOutBtn_clicked()
+{
+    ui->painelGL->setZoom(ui->painelGL->getZoom()-1);
+    ui->painelGL->zoomScale(ui->painelGL->getZoom());
 }

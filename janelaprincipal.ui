@@ -6,147 +6,146 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>585</width>
-    <height>456</height>
+    <width>770</width>
+    <height>498</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>PaintOpenGL</string>
   </property>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox">
+  <widget class="QStatusBar" name="statusBar">
    <property name="geometry">
     <rect>
-     <x>489</x>
-     <y>76</y>
-     <width>81</width>
-     <height>23</height>
+     <x>0</x>
+     <y>0</y>
+     <width>16</width>
+     <height>22</height>
     </rect>
-   </property>
-   <property name="decimals">
-    <number>1</number>
-   </property>
-   <property name="minimum">
-    <double>1.000000000000000</double>
-   </property>
-   <property name="maximum">
-    <double>5.000000000000000</double>
    </property>
   </widget>
-  <widget class="QPushButton" name="drawBtn">
+  <widget class="QToolBar" name="mainToolBar">
    <property name="geometry">
     <rect>
-     <x>489</x>
-     <y>105</y>
-     <width>80</width>
-     <height>21</height>
+     <x>0</x>
+     <y>20</y>
+     <width>771</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Desenhar</string>
-   </property>
+   <addaction name="actionNovo"/>
+   <addaction name="openAction"/>
+   <addaction name="saveAction"/>
+   <addaction name="exitAction"/>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
-     <x>489</x>
-     <y>57</y>
-     <width>21</width>
-     <height>16</height>
+     <x>11</x>
+     <y>0</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Raio</string>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
    </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>true</bool>
+   </property>
+   <widget class="QMenu" name="menuArquivo">
+    <property name="geometry">
+     <rect>
+      <x>259</x>
+      <y>109</y>
+      <width>172</width>
+      <height>140</height>
+     </rect>
+    </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="tearOffEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Arquivo</string>
+    </property>
+    <property name="separatorsCollapsible">
+     <bool>true</bool>
+    </property>
+    <addaction name="actionNovo"/>
+    <addaction name="openAction"/>
+    <addaction name="saveAction"/>
+    <addaction name="separator"/>
+    <addaction name="exitAction"/>
+   </widget>
+   <addaction name="menuArquivo"/>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="PainelOpenGl" name="painelGL" native="true">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>489</x>
-     <y>9</y>
-     <width>32</width>
-     <height>16</height>
+     <x>9</x>
+     <y>58</y>
+     <width>651</width>
+     <height>391</height>
     </rect>
-   </property>
-   <property name="text">
-    <string>Lados:</string>
    </property>
   </widget>
   <widget class="QPushButton" name="upBtn">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>220</y>
+     <x>700</x>
+     <y>280</y>
      <width>28</width>
      <height>24</height>
     </rect>
    </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>../icons/u_arrow_icon.png</normaloff>../icons/u_arrow_icon.png</iconset>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="spinBox">
-   <property name="geometry">
-    <rect>
-     <x>489</x>
-     <y>28</y>
-     <width>81</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>3</number>
-   </property>
-   <property name="maximum">
-    <number>60</number>
-   </property>
-  </widget>
-  <widget class="PainelOpenGl" name="painelGL" native="true">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>474</width>
-     <height>371</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>490</x>
-     <y>430</y>
-     <width>80</width>
-     <height>21</height>
-    </rect>
-   </property>
    <property name="maximumSize">
     <size>
-     <width>89</width>
-     <height>25</height>
+     <width>30</width>
+     <height>30</height>
     </size>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="text">
-    <string>Sair</string>
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="resourcesfiles.qrc">
+     <normaloff>:/icons/icons/u_arrow_icon.png</normaloff>:/icons/icons/u_arrow_icon.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="leftBtn">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>240</y>
+     <x>664</x>
+     <y>310</y>
      <width>28</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
@@ -155,18 +154,50 @@
     <string/>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../icons/l_arrow_icon.png</normaloff>../icons/l_arrow_icon.png</iconset>
+    <iconset resource="resourcesfiles.qrc">
+     <normaloff>:/icons/icons/l_arrow_icon.png</normaloff>:/icons/icons/l_arrow_icon.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="downBtn">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>310</y>
+     <width>28</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="resourcesfiles.qrc">
+     <normaloff>:/icons/icons/d_arrow_icon.png</normaloff>:/icons/icons/d_arrow_icon.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="rightBtn">
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>240</y>
+     <x>734</x>
+     <y>310</y>
      <width>28</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
@@ -179,151 +210,476 @@
      <normaloff>../icons/r_arrow_icon.png</normaloff>../icons/r_arrow_icon.png</iconset>
    </property>
   </widget>
-  <widget class="QPushButton" name="downBtn">
-   <property name="geometry">
-    <rect>
-     <x>520</x>
-     <y>260</y>
-     <width>28</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>../icons/d_arrow_icon.png</normaloff>../icons/d_arrow_icon.png</iconset>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="xScaleSpinBox">
-   <property name="geometry">
-    <rect>
-     <x>500</x>
-     <y>130</y>
-     <width>62</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="decimals">
-    <number>2</number>
-   </property>
-   <property name="minimum">
-    <double>-99990000.000000000000000</double>
-   </property>
-   <property name="singleStep">
-    <double>0.100000000000000</double>
-   </property>
-   <property name="value">
-    <double>1.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="yScaleSpinBox">
-   <property name="geometry">
-    <rect>
-     <x>500</x>
-     <y>160</y>
-     <width>62</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <double>-9999000.000000000000000</double>
-   </property>
-   <property name="singleStep">
-    <double>0.100000000000000</double>
-   </property>
-   <property name="value">
-    <double>1.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="proportionalScaleCb">
-   <property name="geometry">
-    <rect>
-     <x>491</x>
-     <y>190</y>
-     <width>81</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Proporcional</string>
-   </property>
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="tristate">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QDial" name="rotationDial">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>290</y>
+     <x>690</x>
+     <y>330</y>
      <width>50</width>
      <height>64</height>
     </rect>
    </property>
+   <property name="maximumSize">
+    <size>
+     <width>50</width>
+     <height>64</height>
+    </size>
+   </property>
    <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
+    <cursorShape>ClosedHandCursor</cursorShape>
    </property>
    <property name="maximum">
     <number>360</number>
    </property>
   </widget>
-  <widget class="QPushButton" name="focusPreviousBtn">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>360</y>
-     <width>80</width>
-     <height>21</height>
+     <x>320</x>
+     <y>470</y>
+     <width>64</width>
+     <height>26</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Anterior</string>
-   </property>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="0" column="1">
+     <widget class="QPushButton" name="zoomOutBtn">
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/54349.png</normaloff>:/icons/icons/54349.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="zoomInBtn">
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/23910.png</normaloff>:/icons/icons/23910.png</iconset>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QPushButton" name="focusNextBtn">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>380</y>
-     <width>80</width>
-     <height>21</height>
+     <x>670</x>
+     <y>80</y>
+     <width>101</width>
+     <height>132</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Próximo</string>
-   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <widget class="QSpinBox" name="spinBox">
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="minimum">
+       <number>3</number>
+      </property>
+      <property name="maximum">
+       <number>60</number>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="widthBtn">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/View-Width-icon.png</normaloff>:/icons/icons/View-Width-icon.png</iconset>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <widget class="QCheckBox" name="proportionalScaleCb">
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Proporcional</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QDoubleSpinBox" name="yScaleSpinBox">
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="minimum">
+       <double>-9999000.000000000000000</double>
+      </property>
+      <property name="singleStep">
+       <double>0.100000000000000</double>
+      </property>
+      <property name="value">
+       <double>1.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="heightBtn">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/View-Height-icon.png</normaloff>:/icons/icons/View-Height-icon.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="maximumSize">
+       <size>
+        <width>32</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Lados:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDoubleSpinBox" name="xScaleSpinBox">
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="decimals">
+       <number>2</number>
+      </property>
+      <property name="minimum">
+       <double>-99990000.000000000000000</double>
+      </property>
+      <property name="singleStep">
+       <double>0.100000000000000</double>
+      </property>
+      <property name="value">
+       <double>1.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QCheckBox" name="meshCheckBox">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string>Malha</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QPushButton" name="eraseBtn">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>670</x>
      <y>400</y>
-     <width>80</width>
-     <height>21</height>
+     <width>81</width>
+     <height>26</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Apagar</string>
-   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="focusPreviousBtn">
+      <property name="maximumSize">
+       <size>
+        <width>40</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/ic_skip_previous_black_36dp.png</normaloff>:/icons/icons/ic_skip_previous_black_36dp.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="focusNextBtn">
+      <property name="maximumSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/ic_skip_next_black_36dp.png</normaloff>:/icons/icons/ic_skip_next_black_36dp.png</iconset>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>470</y>
+     <width>147</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0">
+     <widget class="QLabel" name="backgroundObjectLabel">
+      <property name="maximumSize">
+       <size>
+        <width>32</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Fundo:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="colorBtn">
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="lineObjectLabel">
+      <property name="maximumSize">
+       <size>
+        <width>32</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Linha:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="lineColorBtn">
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>470</y>
+     <width>132</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="1">
+     <widget class="QPushButton" name="drawCircleBtn">
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/perfect-circle_icon-icons.com_53928.png</normaloff>:/icons/icons/perfect-circle_icon-icons.com_53928.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="drawSquareBtn">
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/squareroundedemptyoutlinedbuttonshape_80680.png</normaloff>:/icons/icons/squareroundedemptyoutlinedbuttonshape_80680.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="drawBtn">
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/67351.png</normaloff>:/icons/icons/67351.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="eraseBtn">
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resourcesfiles.qrc">
+        <normaloff>:/icons/icons/erase.png</normaloff>:/icons/icons/erase.png</iconset>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <action name="actionNovo">
+   <property name="icon">
+    <iconset resource="resourcesfiles.qrc">
+     <normaloff>:/icons/icons/ic_insert_drive_file_black_24dp.png</normaloff>:/icons/icons/ic_insert_drive_file_black_24dp.png</iconset>
+   </property>
+   <property name="text">
+    <string>Novo</string>
+   </property>
+  </action>
+  <action name="saveAction">
+   <property name="icon">
+    <iconset resource="resourcesfiles.qrc">
+     <normaloff>:/icons/icons/ic_vertical_align_bottom_black_24dp.png</normaloff>:/icons/icons/ic_vertical_align_bottom_black_24dp.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salvar</string>
+   </property>
+  </action>
+  <action name="exitAction">
+   <property name="icon">
+    <iconset resource="resourcesfiles.qrc">
+     <normaloff>:/icons/icons/ic_exit_to_app_black_24dp.png</normaloff>:/icons/icons/ic_exit_to_app_black_24dp.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sair</string>
+   </property>
+  </action>
+  <action name="openAction">
+   <property name="icon">
+    <iconset resource="resourcesfiles.qrc">
+     <normaloff>:/icons/icons/ic_folder_black_24dp.png</normaloff>:/icons/icons/ic_folder_black_24dp.png</iconset>
+   </property>
+   <property name="text">
+    <string>Abrir</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
    <class>PainelOpenGl</class>
    <extends>QWidget</extends>
-   <header>painelopengl.h</header>
+   <header location="global">painelopengl.h</header>
    <container>1</container>
    <slots>
     <signal>mouseEvent()</signal>
@@ -332,53 +688,23 @@
    </slots>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resourcesfiles.qrc"/>
+ </resources>
  <connections>
   <connection>
-   <sender>spinBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>painelGL</receiver>
-   <slot>alterarLados(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>569</x>
-     <y>50</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>214</x>
-     <y>132</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>doubleSpinBox</sender>
-   <signal>valueChanged(double)</signal>
-   <receiver>painelGL</receiver>
-   <slot>alterarRaio(double)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>569</x>
-     <y>98</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>263</x>
-     <y>188</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
+   <sender>exitAction</sender>
+   <signal>triggered()</signal>
    <receiver>JanelaPrincipal</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>568</x>
-     <y>379</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>400</x>
-     <y>234</y>
+     <x>356</x>
+     <y>228</y>
     </hint>
    </hints>
   </connection>
