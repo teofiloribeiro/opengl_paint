@@ -224,7 +224,7 @@ void JanelaPrincipal::setColor(const QColor &value)
 
 void JanelaPrincipal::on_openAction_triggered()
 {
-    QString filter = "Arquivos paintGl (*.ptgl)";
+    QString filter = "Arquivos paintGl (*)";
     QString openFile = QFileDialog::getOpenFileName(this, "Abrir Arquivos", QDir::homePath(), filter);
     QFile file(openFile);
     QTextStream in(&file);
@@ -275,6 +275,10 @@ void JanelaPrincipal::on_openAction_triggered()
            shape->setColor(loadColor);
            if(loadLineColor.isValid())
            shape->setLineColor(loadLineColor);
+           if((data = in.readLine()) != NULL)
+           shape->setXShear(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           shape->setYShear(data.toDouble());
 
            ui->painelGL->shapesList.push_back(*shape);
         }
@@ -314,6 +318,8 @@ void JanelaPrincipal::on_saveAction_triggered()
             out << ui->painelGL->shapesList.at(i).getLineColor().greenF() <<endl;
             out << ui->painelGL->shapesList.at(i).getLineColor().blueF() <<endl;
             out << ui->painelGL->shapesList.at(i).getLineColor().alphaF() <<endl;
+            out << ui->painelGL->shapesList.at(i).getXShear() <<endl;
+            out << ui->painelGL->shapesList.at(i).getYShear() <<endl;
         }
         file.flush();
         file.close();
@@ -354,4 +360,36 @@ void JanelaPrincipal::on_zoomOutBtn_clicked()
 {
     ui->painelGL->setZoom(ui->painelGL->getZoom()-1);
     ui->painelGL->zoomScale(ui->painelGL->getZoom());
+}
+
+void JanelaPrincipal::on_shXDoubleSpinBox_valueChanged(double arg1)
+{
+    if(ui->painelGL->shapesList.size() > 0){
+        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setXShear(ui->shXDoubleSpinBox->value());
+       ui->painelGL->updateGL();
+    }
+}
+
+void JanelaPrincipal::on_shYDoubleSpinBox_valueChanged(double arg1)
+{
+    if(ui->painelGL->shapesList.size() > 0){
+        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setYShear(ui->shYDoubleSpinBox->value());
+        ui->painelGL->updateGL();
+    }
+}
+
+void JanelaPrincipal::on_reflexXBtn_clicked()
+{
+    if(ui->painelGL->shapesList.size() > 0){
+        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setIsReflexX(!ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).getIsReflexX());
+        ui->painelGL->updateGL();
+    }
+}
+
+void JanelaPrincipal::on_reflexYBtn_clicked()
+{
+    if(ui->painelGL->shapesList.size() > 0){
+        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setIsReflexY(!ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).getIsReflexY());
+        ui->painelGL->updateGL();
+    }
 }

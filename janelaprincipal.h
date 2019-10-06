@@ -1,6 +1,8 @@
 #ifndef JANELAPRINCIPAL_H
 #define JANELAPRINCIPAL_H
 
+#define boolean bool
+
 #include <QGLWidget>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -70,6 +72,14 @@ private slots:
     void on_zoomInBtn_clicked();
 
     void on_zoomOutBtn_clicked();
+
+    void on_shXDoubleSpinBox_valueChanged(double arg1);
+
+    void on_shYDoubleSpinBox_valueChanged(double arg1);
+
+    void on_reflexXBtn_clicked();
+
+    void on_reflexYBtn_clicked();
 
 private:
     Ui::JanelaPrincipal *ui;

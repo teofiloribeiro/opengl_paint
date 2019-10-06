@@ -116,8 +116,14 @@ void PainelOpenGl::drawShape()
   if(this->shapesList.size() > 0){
      for(int i = 0; i <= shapesList.size()-1; i++){
         glTranslated(this->shapesList.at(i).getXTranslated()+this->zoom, this->shapesList.at(i).getYTranslated()+this->zoom, 0.0);
+        this->glShear(this->shapesList.at(i).getXShear(),this->shapesList.at(i).getYShear());
         glScalef(this->shapesList.at(i).getXScale()+this->zoom,this->shapesList.at(i).getYScale()+this->zoom,0);
         glRotatef(this->shapesList.at(i).getAngle()+this->zoom,0,0,1);
+//        if(this->shapesList.at(i).getIsReflexX())
+//            this->glReflexX();
+//        if(this->shapesList.at(i).getIsReflexY())
+//            this->glReflexY();
+
         this->shapesList.at(i).draw();
         }
     }
@@ -166,4 +172,38 @@ void PainelOpenGl::keyPressEvent(QKeyEvent *event)
 }
 
 
+void PainelOpenGl::glShear (double x, double y){
+    GLfloat mX[16] = {
+        1.0f, 0.0f, 0.0f, 0.0f,
+        x,   1.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 0.0f, 1.0f
+    };
+    glMultMatrixf(mX);
+    GLfloat mY[16] = {
+        1.0f, y,    0.0f, 0.0f,
+        0.0f, 1.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 0.0f, 1.0f
+    };
+    glMultMatrixf(mY);
+}
 
+void PainelOpenGl::glReflexX(){
+    GLfloat mX[16] = {
+        1.0f,  0.0f, 0.0f, 0.0f,
+        0.0f, -1.0f, 0.0f, 0.0f,
+        0.0f,  0.0f, 1.0f, 0.0f,
+        0.0f,  0.0f, 0.0f, 1.0f
+    };
+    glMultMatrixf(mX);
+}
+void PainelOpenGl::glReflexY(){
+    GLfloat mX[16] = {
+        -1.0f, 0.0f, 0.0f, 0.0f,
+        0.0f,  1.0f, 0.0f, 0.0f,
+        0.0f,  0.0f, 1.0f, 0.0f,
+        0.0f,  0.0f, 0.0f, 1.0f
+    };
+    glMultMatrixf(mX);
+}

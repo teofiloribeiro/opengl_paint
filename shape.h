@@ -1,6 +1,8 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
+#define boolean bool
+
 #include <GL/gl.h>
 #include <cmath>
 #include<QColor>
@@ -54,13 +56,27 @@ public:
    QColor getLineColor() const;
    void setLineColor(const QColor &value);
 
+   double getXShear() const;
+   void setXShear(double value);
+
+   double getYShear() const;
+   void setYShear(double value);
+
+   bool getIsReflexX() const;
+   void setIsReflexX(bool value);
+
+   bool getIsReflexY() const;
+   void setIsReflexY(bool value);
+
 private:
    int side;
    double radius;
    double xTranslated, yTranslated;
    double xScale, yScale;
+   double xShear,yShear;
    double angle;
    boolean isFocused;
+   boolean isReflexX, isReflexY;
    QColor color;
    QColor lineColor;
 };

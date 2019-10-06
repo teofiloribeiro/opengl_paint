@@ -8,15 +8,19 @@ Shape::Shape()
 
 Shape::Shape(int side, double radius)
 {
-   this->side = side;
-   this->radius = radius;
-   this->xTranslated = 5.0;
-   this->yTranslated = 5.0;
-   this->xScale = 1.0;
-   this->yScale = 1.0;
-   this->angle = 0;
-   this->isFocused = true;
-   this->lineColor = Qt::black;
+    this->side = side;
+    this->radius = radius;
+    this->xTranslated = 5.0;
+    this->yTranslated = 5.0;
+    this->xScale = 1.0;
+    this->yScale = 1.0;
+    this->angle = 0;
+    this->isFocused = true;
+    this->setXShear(0);
+    this->setYShear(0);
+    this->lineColor = Qt::black;
+    this->isReflexX = false;
+    this->isReflexY = false;
 }
 
 void Shape::draw()
@@ -156,5 +160,45 @@ QColor Shape::getLineColor() const
 void Shape::setLineColor(const QColor &value)
 {
     lineColor = value;
+}
+
+double Shape::getXShear() const
+{
+    return xShear;
+}
+
+void Shape::setXShear(double value)
+{
+    xShear = value;
+}
+
+double Shape::getYShear() const
+{
+    return yShear;
+}
+
+void Shape::setYShear(double value)
+{
+    yShear = value;
+}
+
+bool Shape::getIsReflexX() const
+{
+    return isReflexX;
+}
+
+void Shape::setIsReflexX(bool value)
+{
+    isReflexX = value;
+}
+
+bool Shape::getIsReflexY() const
+{
+    return isReflexY;
+}
+
+void Shape::setIsReflexY(bool value)
+{
+    isReflexY = value;
 }
 

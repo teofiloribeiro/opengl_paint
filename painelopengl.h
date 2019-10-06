@@ -1,6 +1,8 @@
 #ifndef PAINELOPENGL_H
 #define PAINELOPENGL_H
 
+#define boolean bool
+
 #include "shape.h"
 #include<QColor>
 #include<QColorDialog>
@@ -42,6 +44,10 @@ public:
 
     boolean getIsDrawMesh() const;
     void setIsDrawMesh(const boolean &value);
+
+    void glShear (double x, double y);
+    void glReflexX();
+    void glReflexY();
 
 protected:
     void initializeGL();
