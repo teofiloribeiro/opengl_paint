@@ -11,6 +11,7 @@ PainelOpenGl::PainelOpenGl(QWidget *parent):
     this->zoom = 0;
     this->shapeFocus = 0;
     isDrawMesh = true;
+    this->meshSize = 1;
 }
 
 double PainelOpenGl::getZoom() const
@@ -84,6 +85,16 @@ void PainelOpenGl::paintGL(){
     this->drawShape();
 }
 
+double PainelOpenGl::getMeshSize() const
+{
+    return meshSize;
+}
+
+void PainelOpenGl::setMeshSize(double value)
+{
+    meshSize = value;
+}
+
 boolean PainelOpenGl::getIsDrawMesh() const
 {
     return isDrawMesh;
@@ -97,12 +108,12 @@ void PainelOpenGl::setIsDrawMesh(const boolean &value)
 
 void PainelOpenGl::drawMesh(){
     if(this->isDrawMesh){
-        glLineWidth(10);
+        glLineWidth(20);
         glColor3f(0,0,0);
-        glPointSize(2.0f);
+        glPointSize(3.0f);
         glBegin(GL_POINTS);
-        for(int i = this->menorX; i<= this->maiorX; i++){
-            for(int j = this->menorY; j<= this->maiorY; j++){
+        for(int i = this->menorX; i<= this->maiorX; i += this->meshSize){
+            for(int j = this->menorY; j<= this->maiorY; j += this->meshSize){
                 glVertex2f(i,j);
             }
         }
@@ -119,11 +130,10 @@ void PainelOpenGl::drawShape()
         this->glShear(this->shapesList.at(i).getXShear(),this->shapesList.at(i).getYShear());
         glScalef(this->shapesList.at(i).getXScale()+this->zoom,this->shapesList.at(i).getYScale()+this->zoom,0);
         glRotatef(this->shapesList.at(i).getAngle()+this->zoom,0,0,1);
-//        if(this->shapesList.at(i).getIsReflexX())
-//            this->glReflexX();
-//        if(this->shapesList.at(i).getIsReflexY())
-//            this->glReflexY();
-
+        if(this->shapesList.at(i).getIsReflexX())
+           this->glReflexX();
+        if(this->shapesList.at(i).getIsReflexY())
+           this->glReflexY();
         this->shapesList.at(i).draw();
         }
     }
@@ -199,11 +209,31 @@ void PainelOpenGl::glReflexX(){
     glMultMatrixf(mX);
 }
 void PainelOpenGl::glReflexY(){
-    GLfloat mX[16] = {
+    GLfloat mY[16] = {
         -1.0f, 0.0f, 0.0f, 0.0f,
         0.0f,  1.0f, 0.0f, 0.0f,
         0.0f,  0.0f, 1.0f, 0.0f,
         0.0f,  0.0f, 0.0f, 1.0f
     };
-    glMultMatrixf(mX);
+    glMultMatrixf(mY);
 }
+
+void PainelOpenGl::reflex(int reflex)
+{
+    switch (reflex)   {
+        case REFLEX_X:
+            if(this->shapesList.at(this->shapeFocus).getIsReflexX())
+                this->shapesList.at(this->shapeFocus).setIsReflexX(false);
+            else
+                this->shapesList.at(this->shapeFocus).setIsReflexX(true);
+        break;
+        case REFLEX_Y:
+            if(this->shapesList.at(this->shapeFocus).getIsReflexY())
+                this->shapesList.at(this->shapeFocus).setIsReflexY(false);
+            else
+                this->shapesList.at(this->shapeFocus).setIsReflexY(true);
+         break;
+    }
+}
+
+

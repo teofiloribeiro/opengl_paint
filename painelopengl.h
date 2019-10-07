@@ -1,8 +1,6 @@
 #ifndef PAINELOPENGL_H
 #define PAINELOPENGL_H
 
-#define boolean bool
-
 #include "shape.h"
 #include<QColor>
 #include<QColorDialog>
@@ -12,10 +10,14 @@
 #include <GL/glu.h>
 
 
-
 enum {
     UP, LEFT, RIGHT , DOWN
 };
+
+enum {
+    REFLEX_X, REFLEX_Y, REFLEX_Z
+};
+
 using namespace std;
 class PainelOpenGl : public QGLWidget
 {
@@ -48,6 +50,10 @@ public:
     void glShear (double x, double y);
     void glReflexX();
     void glReflexY();
+    void reflex(int reflex);
+
+    double getMeshSize() const;
+    void setMeshSize(double value);
 
 protected:
     void initializeGL();
@@ -63,6 +69,7 @@ private:
     double zoom;
     int shapeFocus;
     boolean isDrawMesh;
+    double meshSize;
 
 };
 

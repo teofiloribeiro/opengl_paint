@@ -1,8 +1,6 @@
 #ifndef JANELAPRINCIPAL_H
 #define JANELAPRINCIPAL_H
 
-#define boolean bool
-
 #include <QGLWidget>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -80,6 +78,8 @@ private slots:
     void on_reflexXBtn_clicked();
 
     void on_reflexYBtn_clicked();
+
+    void on_meshSizeSpin_valueChanged(double arg1);
 
 private:
     Ui::JanelaPrincipal *ui;

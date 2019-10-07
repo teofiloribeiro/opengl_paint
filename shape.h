@@ -1,8 +1,6 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#define boolean bool
-
 #include <GL/gl.h>
 #include <cmath>
 #include<QColor>

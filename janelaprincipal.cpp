@@ -26,6 +26,8 @@ void JanelaPrincipal::on_drawBtn_clicked()
     }
     ui->painelGL->updateGL();
     ui->spinBox->setValue(3);
+    if(ui->painelGL->shapesList.size() > 0)
+        ui->objectNumberLabel->setText("Quantidade de objetos: " + QString::number(ui->painelGL->shapesList.size()));
 }
 
 void JanelaPrincipal::on_drawCircleBtn_clicked()
@@ -40,6 +42,8 @@ void JanelaPrincipal::on_drawCircleBtn_clicked()
     }
     ui->painelGL->updateGL();
     ui->spinBox->setValue(60);
+    if(ui->painelGL->shapesList.size() > 0)
+        ui->objectNumberLabel->setText("Quantidade de objetos: " + QString::number(ui->painelGL->shapesList.size()));
 
 }
 
@@ -55,6 +59,8 @@ void JanelaPrincipal::on_drawSquareBtn_clicked()
     }
     ui->painelGL->updateGL();
     ui->spinBox->setValue(4);
+    if(ui->painelGL->shapesList.size() > 0)
+        ui->objectNumberLabel->setText("Quantidade de objetos: " + QString::number(ui->painelGL->shapesList.size()));
 }
 
 
@@ -174,6 +180,7 @@ void JanelaPrincipal::on_eraseBtn_clicked()
         ui->painelGL->shapesList.erase(ui->painelGL->shapesList.begin()+ui->painelGL->getShapeFocus());
         on_focusNextBtn_clicked();
         ui->painelGL->updateGL();
+        ui->objectNumberLabel->setText("Quantidade de objetos: " + QString::number(ui->painelGL->shapesList.size()));
     }
 }
 
@@ -224,7 +231,7 @@ void JanelaPrincipal::setColor(const QColor &value)
 
 void JanelaPrincipal::on_openAction_triggered()
 {
-    QString filter = "Arquivos paintGl (*)";
+    QString filter = "Arquivos paintGl (*.ptgl)";
     QString openFile = QFileDialog::getOpenFileName(this, "Abrir Arquivos", QDir::homePath(), filter);
     QFile file(openFile);
     QTextStream in(&file);
@@ -279,12 +286,18 @@ void JanelaPrincipal::on_openAction_triggered()
            shape->setXShear(data.toDouble());
            if((data = in.readLine()) != NULL)
            shape->setYShear(data.toDouble());
+           if((data = in.readLine()) != NULL)
+           shape->setIsReflexX(data.toInt());
+           if((data = in.readLine()) != NULL)
+           shape->setIsReflexX(data.toInt());
 
            ui->painelGL->shapesList.push_back(*shape);
         }
 
     }
     ui->painelGL->updateGL();
+    if(ui->painelGL->shapesList.size() > 0)
+        ui->objectNumberLabel->setText("Quantidade de objetos: " + QString::number(ui->painelGL->shapesList.size()));
 }
 
 
@@ -320,6 +333,8 @@ void JanelaPrincipal::on_saveAction_triggered()
             out << ui->painelGL->shapesList.at(i).getLineColor().alphaF() <<endl;
             out << ui->painelGL->shapesList.at(i).getXShear() <<endl;
             out << ui->painelGL->shapesList.at(i).getYShear() <<endl;
+            out << ui->painelGL->shapesList.at(i).getIsReflexX() <<endl;
+            out << ui->painelGL->shapesList.at(i).getIsReflexY() <<endl;
         }
         file.flush();
         file.close();
@@ -339,6 +354,7 @@ void JanelaPrincipal::on_actionNovo_triggered()
 {
    ui->painelGL->shapesList.clear();
    ui->painelGL->updateGL();
+   ui->objectNumberLabel->clear();
 }
 
 
@@ -381,7 +397,7 @@ void JanelaPrincipal::on_shYDoubleSpinBox_valueChanged(double arg1)
 void JanelaPrincipal::on_reflexXBtn_clicked()
 {
     if(ui->painelGL->shapesList.size() > 0){
-        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setIsReflexX(!ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).getIsReflexX());
+        ui->painelGL->reflex(0);
         ui->painelGL->updateGL();
     }
 }
@@ -389,7 +405,13 @@ void JanelaPrincipal::on_reflexXBtn_clicked()
 void JanelaPrincipal::on_reflexYBtn_clicked()
 {
     if(ui->painelGL->shapesList.size() > 0){
-        ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).setIsReflexY(!ui->painelGL->shapesList.at(ui->painelGL->getShapeFocus()).getIsReflexY());
+        ui->painelGL->reflex(1);
         ui->painelGL->updateGL();
     }
+}
+
+void JanelaPrincipal::on_meshSizeSpin_valueChanged(double arg1)
+{
+   ui->painelGL->setMeshSize(ui->meshSizeSpin->value());
+   ui->painelGL->updateGL();
 }
