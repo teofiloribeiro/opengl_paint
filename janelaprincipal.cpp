@@ -415,3 +415,46 @@ void JanelaPrincipal::on_meshSizeSpin_valueChanged(double arg1)
    ui->painelGL->setMeshSize(ui->meshSizeSpin->value());
    ui->painelGL->updateGL();
 }
+
+void JanelaPrincipal::on_upCamBt_clicked()
+{
+
+   ui->painelGL->setMode3D(true);
+   ui->painelGL->updateGL();
+}
+
+void JanelaPrincipal::on_pushButton_clicked()
+{
+   ui->painelGL->setMode3D(false);
+    ui->painelGL->updateGL();
+}
+
+void JanelaPrincipal::on_checkBoxIluminacao_stateChanged(int arg1)
+{
+    ui->painelGL->setEnableLighting(arg1);
+    ui->painelGL->updateGL();
+}
+
+void JanelaPrincipal::on_upBtn_2_clicked()
+{
+    ui->painelGL->setCamUp( ui->painelGL->getCamUp()-1);
+     ui->painelGL->updateGL();
+}
+
+void JanelaPrincipal::on_downBtn_2_clicked()
+{
+     ui->painelGL->setCamUp( ui->painelGL->getCamUp()+1);
+      ui->painelGL->updateGL();
+}
+
+void JanelaPrincipal::on_leftBtn_2_clicked()
+{
+    ui->painelGL->setCamDown( ui->painelGL->getCamDown()+1);
+    ui->painelGL->updateGL();
+}
+
+void JanelaPrincipal::on_rightBtn_2_clicked()
+{
+    ui->painelGL->setCamDown( ui->painelGL->getCamDown()-1);
+    ui->painelGL->updateGL();
+}

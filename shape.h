@@ -21,7 +21,7 @@ class Shape
 public:
    Shape();
    Shape(int side, double radius);
-   void draw();
+   void draw(boolean mode3D);
 
 
    int getSide() const;

@@ -39,3 +39,4 @@ FORMS += \
 
 RESOURCES += \
     resourcesfiles.qrc
+

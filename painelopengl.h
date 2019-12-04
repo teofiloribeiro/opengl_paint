@@ -33,6 +33,7 @@ public:
     void rotate(double angle);
     void zoomScale(double zoom);
     double mouseCoordinate(int width, int height, double mouseX, double mouseY);
+    void iluminacao();
 
     void mousePressEvent(QMouseEvent * event);
 
@@ -55,6 +56,18 @@ public:
     double getMeshSize() const;
     void setMeshSize(double value);
 
+    double getCamUp() const;
+    void setCamUp(double value);
+
+    double getCamDown() const;
+    void setCamDown(double value);
+
+    boolean getMode3D() const;
+    void setMode3D(const boolean &value);
+
+    boolean getEnableLighting() const;
+    void setEnableLighting(const boolean &value);
+
 protected:
     void initializeGL();
     void resizeGL(int w, int h);
@@ -70,6 +83,10 @@ private:
     int shapeFocus;
     boolean isDrawMesh;
     double meshSize;
+    double camUp;
+    double camDown;
+    boolean mode3D;
+    boolean enableLighting;
 
 };
 

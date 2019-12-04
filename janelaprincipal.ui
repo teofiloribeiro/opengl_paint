@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>PaintOpenGL</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_8">
+  <layout class="QGridLayout" name="gridLayout_6">
    <item row="0" column="0">
     <widget class="QMenuBar" name="menuBar">
      <property name="maximumSize">
@@ -84,14 +84,14 @@
      <addaction name="exitAction"/>
     </widget>
    </item>
-   <item row="2" column="0" rowspan="4" colspan="6">
+   <item row="2" column="0" rowspan="10" colspan="5">
     <widget class="PainelOpenGl" name="painelGL" native="true">
      <property name="enabled">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="6">
+   <item row="2" column="5" colspan="3">
     <layout class="QGridLayout" name="gridLayout">
      <item row="8" column="0">
       <widget class="QPushButton" name="reflexXBtn">
@@ -339,6 +339,117 @@
     </spacer>
    </item>
    <item row="4" column="6">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Câmera</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="6">
+    <widget class="QPushButton" name="upBtn_2">
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resourcesfiles.qrc">
+       <normaloff>:/icons/icons/u_arrow_icon.png</normaloff>:/icons/icons/u_arrow_icon.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="5">
+    <widget class="QPushButton" name="leftBtn_2">
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resourcesfiles.qrc">
+       <normaloff>:/icons/icons/l_arrow_icon.png</normaloff>:/icons/icons/l_arrow_icon.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="6">
+    <widget class="QPushButton" name="downBtn_2">
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resourcesfiles.qrc">
+       <normaloff>:/icons/icons/d_arrow_icon.png</normaloff>:/icons/icons/d_arrow_icon.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="7">
+    <widget class="QPushButton" name="rightBtn_2">
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../icons/r_arrow_icon.png</normaloff>../icons/r_arrow_icon.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="5" colspan="2">
+    <widget class="QCheckBox" name="checkBoxIluminacao">
+     <property name="text">
+      <string>Iluminação</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="5" colspan="2">
+    <widget class="QPushButton" name="upCamBt">
+     <property name="text">
+      <string>3D</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="5" colspan="2">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>2D</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="5" colspan="3">
     <layout class="QGridLayout" name="gridLayout_7">
      <item row="0" column="0">
       <widget class="QDial" name="rotationDial">
@@ -361,91 +472,27 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="6" rowspan="3">
-    <layout class="QGridLayout" name="gridLayout_6">
-     <item row="1" column="0">
-      <widget class="QPushButton" name="leftBtn">
-       <property name="maximumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="resourcesfiles.qrc">
-         <normaloff>:/icons/icons/l_arrow_icon.png</normaloff>:/icons/icons/l_arrow_icon.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="downBtn">
-       <property name="maximumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="resourcesfiles.qrc">
-         <normaloff>:/icons/icons/d_arrow_icon.png</normaloff>:/icons/icons/d_arrow_icon.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QPushButton" name="rightBtn">
-       <property name="maximumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../icons/r_arrow_icon.png</normaloff>../icons/r_arrow_icon.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="upBtn">
-       <property name="maximumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="resourcesfiles.qrc">
-         <normaloff>:/icons/icons/u_arrow_icon.png</normaloff>:/icons/icons/u_arrow_icon.png</iconset>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="11" column="6" rowspan="2">
+    <widget class="QPushButton" name="upBtn">
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resourcesfiles.qrc">
+       <normaloff>:/icons/icons/u_arrow_icon.png</normaloff>:/icons/icons/u_arrow_icon.png</iconset>
+     </property>
+    </widget>
    </item>
-   <item row="6" column="0" rowspan="2">
+   <item row="12" column="0" rowspan="2">
     <layout class="QGridLayout" name="gridLayout_4">
      <item row="0" column="0">
       <widget class="QLabel" name="backgroundObjectLabel">
@@ -507,7 +554,7 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="1" rowspan="2">
+   <item row="12" column="1" rowspan="2">
     <layout class="QGridLayout" name="gridLayout_3">
      <item row="0" column="1">
       <widget class="QPushButton" name="drawCircleBtn">
@@ -579,7 +626,7 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="2" rowspan="2">
+   <item row="12" column="2" rowspan="2">
     <layout class="QGridLayout" name="gridLayout_5">
      <item row="0" column="1">
       <widget class="QPushButton" name="zoomOutBtn">
@@ -617,7 +664,7 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="3" rowspan="2">
+   <item row="12" column="3" rowspan="2">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
       <widget class="QPushButton" name="focusPreviousBtn">
@@ -661,14 +708,14 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="4" rowspan="2" colspan="2">
+   <item row="12" column="4">
     <widget class="QLabel" name="objectNumberLabel">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="7" column="5">
+   <item row="13" column="4">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -680,6 +727,66 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="13" column="5">
+    <widget class="QPushButton" name="leftBtn">
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resourcesfiles.qrc">
+       <normaloff>:/icons/icons/l_arrow_icon.png</normaloff>:/icons/icons/l_arrow_icon.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="6">
+    <widget class="QPushButton" name="downBtn">
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resourcesfiles.qrc">
+       <normaloff>:/icons/icons/d_arrow_icon.png</normaloff>:/icons/icons/d_arrow_icon.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="7">
+    <widget class="QPushButton" name="rightBtn">
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../icons/r_arrow_icon.png</normaloff>../icons/r_arrow_icon.png</iconset>
+     </property>
+    </widget>
    </item>
   </layout>
   <action name="actionNovo">

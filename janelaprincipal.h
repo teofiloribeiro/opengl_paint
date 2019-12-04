@@ -81,6 +81,20 @@ private slots:
 
     void on_meshSizeSpin_valueChanged(double arg1);
 
+    void on_upCamBt_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_checkBoxIluminacao_stateChanged(int arg1);
+
+    void on_upBtn_2_clicked();
+
+    void on_downBtn_2_clicked();
+
+    void on_leftBtn_2_clicked();
+
+    void on_rightBtn_2_clicked();
+
 private:
     Ui::JanelaPrincipal *ui;
     QColor color;
